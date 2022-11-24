@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление звезды</title>
+  <style>
+    th,td{
+      border: solid black;
+    }
+  </style>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<h1>Добавить звезду</h1>
+
+<form method="post" th:object="${star}">
+  <label>Название</label>
+  <input th:field="*{name}" class="form-control" type="text" name="name">
+  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"/>
+<!--  <label>Класс звезды</label>-->
+<!--  <input class="form-control" type="text" name="class_star">-->
+<!--  <label>Яркость звезды</label>-->
+<!--  <input class="form-control" type="number" name="lumen">-->
+  <input class="btn btn-success" type="submit" value="Добавить звезду">
+</form>
+
+<a class="btn btn-danger" href="/star/">Назад</a>
+
+</body>
+</html>

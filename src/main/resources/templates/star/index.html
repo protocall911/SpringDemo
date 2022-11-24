@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Звёзды</title>
+    <style>
+        th,td{
+            border: solid black;
+        }
+    </style>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+<header th:insert="/fragments/header :: headerMain"></header>
+
+<h1>Список звёзд</h1>
+
+<form method="get" action="/star/filter">
+    <input class="form-control" name="name" type="text">
+    <input class="btn btn-info" type="submit" value="Найти">
+</form>
+<form method="get" action="/star/filtercontains">
+    <input class="form-control" name="name" type="text">
+    <input class="btn btn-info" type="submit" value="Найти">
+</form>
+
+
+<a href="/star/add" class="btn btn-success">Добавить звезду</a>
+
+<table style="border: solid black">
+    <tr>
+        <th>Название</th>
+        <th>Класс</th>
+        <th>Люмен</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each="el : ${star_list}">
+        <td th:text="${el.name}"></td>
+        <td th:text="${el.class_star}"></td>
+        <td th:text="${el.lumen}"></td>
+        <td>
+            <a class="btn btn-primary"
+               th:href="'/star/detail/' + ${el.UID}">Редактировать</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
